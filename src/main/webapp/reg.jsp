@@ -24,27 +24,7 @@
 
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-    function validate() {
-        let result = true;
-        let name = $("#name");
-        let email = $("#email");
-        let password = $("#password");
-        if (name.val() === '') {
-            alert(name.attr('placeholder'));
-            result = false;
-        }
-        if (email.val() === '') {
-            alert(email.attr('placeholder'));
-            result = false;
-        }
-        if (password.val() === '') {
-            alert(password.attr('placeholder'));
-            result = false;
-        }
-        return result;
-    }
-</script>
+<script src="script/regValidate.js"></script>
 <body>
 <div class="container pt-3">
     <div class="container">
