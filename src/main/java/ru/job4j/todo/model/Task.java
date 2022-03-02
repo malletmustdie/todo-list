@@ -14,8 +14,8 @@ import java.util.Objects;
 import ru.job4j.todo.util.DateFormatUtil;
 
 @Entity
-@Table(name = "items")
-public class Item {
+@Table(name = "tasks")
+public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,10 +31,10 @@ public class Item {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Item() {
+    public Task() {
     }
 
-    public Item(String description) {
+    public Task(String description) {
         this.description = description;
         this.created = DateFormatUtil.parseCreatedDate(new Timestamp(System.currentTimeMillis()));
         this.done = false;
@@ -84,7 +84,7 @@ public class Item {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Item item = (Item) o;
+        Task item = (Task) o;
         return Objects.equals(id, item.id);
     }
 
