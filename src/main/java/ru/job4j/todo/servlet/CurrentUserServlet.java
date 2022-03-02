@@ -1,6 +1,5 @@
 package ru.job4j.todo.servlet;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +18,7 @@ public class CurrentUserServlet extends HttpServlet {
         if (user != null) {
             json = new Gson().toJson(user);
         }
-        resp.setContentType("json");
+        resp.setContentType("application/json; charset=utf-8");
         resp.getWriter().write(json);
     }
 

@@ -18,7 +18,7 @@ public class ShowItemsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         var list = store.findAll();
         String json = new Gson().toJson(list);
-        resp.setContentType("json");
+        resp.setContentType("application/json; charset=utf-8");
         resp.getWriter().write(json);
     }
 
