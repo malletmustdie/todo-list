@@ -27,6 +27,7 @@
 
     <changeSet id="insert_into_users_table" author="elias">
         <insert tableName="users">
+            <column name="id" value="1"/>
             <column name="username" value="Admin"/>
             <column name="email" value="root@local"/>
             <column name="password" value="root"/>
