@@ -7,14 +7,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.google.gson.Gson;
-import ru.job4j.todo.model.Item;
+import com.google.gson.GsonBuilder;
 import ru.job4j.todo.dao.ItemDao;
 import ru.job4j.todo.dao.impl.ItemDaoImpl;
+import ru.job4j.todo.model.Item;
 import ru.job4j.todo.model.User;
 
 public class AddItemServlet extends HttpServlet {
 
-    private final ItemDao store = new ItemDaoImpl();
+    private static final Gson GSON = new GsonBuilder().create();
+
+    private final ItemDao itemDao = new ItemDaoImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -23,10 +26,10 @@ public class AddItemServlet extends HttpServlet {
         User user = (User) req.getSession().getAttribute("user");
         Item item = new Item(description);
         item.setUser(user);
-        store.save(item);
-        String json = new Gson().toJson(item);
-        resp.setContentType("json");
-        resp.getWriter().write(json);
+        itemDao.save(item);
+        String response = GSON.toJson(item);
+        resp.setContentType("application/json; charset=utf-8");
+        resp.getWriter().write(response);
     }
 
 }
