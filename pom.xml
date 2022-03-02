@@ -166,15 +166,15 @@
           <password>${db.password}</password>
           <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
         </configuration>
-        <executions>
-          <execution>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>clearCheckSums</goal>
-              <goal>update</goal>
-            </goals>
-          </execution>
-        </executions>
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <phase>process-resources</phase>-->
+<!--            <goals>-->
+<!--              <goal>clearCheckSums</goal>-->
+<!--              <goal>update</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
       </plugin>
     </plugins>
   </build>
