@@ -17,24 +17,24 @@ public class TaskDaoImpl extends AbstractDao implements TaskDao {
     @Override
     public void delete(Long id) {
         this.tx(session ->
-                        session.createQuery("delete Task where id = :id")
+                        session.createQuery("delete Task i where i.id = :id")
                                .setParameter("id", id)
                                .executeUpdate());
     }
 
     @Override
     public void update(Task item) {
-        this.tx(session -> session.createQuery("update Task set done = : done where id = :id")
+        this.tx(session -> session.createQuery("update Task i set i.done = :done where i.id = :id")
                                   .setParameter("done", item.getDone())
                                   .setParameter("id", item.getId())
                                   .executeUpdate());
     }
 
     @Override
-    public Task findById(long id) {
+    public Task findById(Long id) {
         return (Task) this.tx(
                 session -> session
-                        .createQuery("from Task where id = :id")
+                        .createQuery("from Task i where i.id = :id")
                         .setParameter("id", id)
                         .uniqueResult()
         );
@@ -44,7 +44,7 @@ public class TaskDaoImpl extends AbstractDao implements TaskDao {
     public List<Task> findAll() {
         return this.tx(
                 session -> session
-                        .createQuery("from Task")
+                        .createQuery("from Task i order by i.id")
                         .list()
         );
     }

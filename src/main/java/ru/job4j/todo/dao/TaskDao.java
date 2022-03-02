@@ -12,7 +12,7 @@ public interface TaskDao {
 
     void update(Task item);
 
-    Task findById(long id);
+    Task findById(Long id);
 
     List<Task> findAll();
 

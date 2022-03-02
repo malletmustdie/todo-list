@@ -24,10 +24,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>TODO List</title>
-
     <script>
         $(document).ready(function () {
-            showAll();
+            showAllTasks();
             getCurrentUser();
             addNewTask();
         });
@@ -51,7 +50,7 @@
         }
 
         function addNewTask() {
-            $("#new-item-form").submit(
+            $("#new-task-form").submit(
                 function () {
                     let description = $("#description").val();
                     $.ajax({
@@ -67,19 +66,30 @@
                 });
         }
 
-        function filterItems() {
-            let check = $("#showAll").prop("checked");
+        function filterTasks() {
+            let check = $("#showTasks").prop("checked");
             if (check) {
-                showAll();
+                showAllTasks();
             } else {
                 showUnresolvedTasks();
             }
         }
 
-        function showAll() {
+        function showAllTasks() {
             $.ajax({
                 type: 'POST',
                 url: 'http://localhost:8080/todo/items.do',
+                dataType: 'json',
+                success: function ($data) {
+                    createTable($data);
+                }
+            });
+        }
+
+        function showUnresolvedTasks() {
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8080/todo/unresolved-items.do',
                 dataType: 'json',
                 success: function ($data) {
                     createTable($data);
@@ -133,17 +143,6 @@
             return result;
         }
 
-        function showUnresolvedTasks() {
-            $.ajax({
-                type: 'POST',
-                url: 'http://localhost:8080/todo/unresolved-items.do',
-                dataType: 'json',
-                success: function ($data) {
-                    createTable($data);
-                }
-            });
-        }
-
         function setStatusDone(id) {
             $.ajax({
                 type: 'GET',
@@ -183,22 +182,18 @@
                 }
             });
         }
-
     </script>
 </head>
 <body>
-
 <%
     HttpSession hs = request.getSession();
     User user = (User) hs.getAttribute("user");
 %>
-
 <div class="container pt-3">
-
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header" style="font-weight: bold; font-size: larger">
-                TODO list - simple task manager.
+                TODO list - simple task manager
             </div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -219,18 +214,14 @@
             </nav>
         </div>
     </div>
-
     <% if (user != null) { %>
-
     <div class="row pt-2">
         <div class="card" style="width: 100%">
             <div class="card-header" style="font-weight: bold; font-size: larger">
                 Добавить новую задачу
             </div>
-            <div class="container" id="message">
-            </div>
             <div class="card-body">
-                <form id="new-item-form">
+                <form id="new-task-form">
                     <div class="form-group">
                         <label for="description" style="font-weight: bold">Описание задачи</label>
                         <input type="text" class="form-control" id="description"/>
@@ -240,14 +231,12 @@
             </div>
         </div>
     </div>
-
     <div class="row pt-3">
         <div class="form-check pb-2">
-            <input type="checkbox" id="showAll" name="showAll" value="showAll" checked onchange="filterItems()">
-            <label class="form-check-label" for="showAll">Показать все задачи</label>
+            <input type="checkbox" id="showTasks" name="showTasks" value="showTasks" checked onchange="filterTasks()">
+            <label class="form-check-label" for="showTasks">Показать все задачи</label>
         </div>
     </div>
-
     <div class="row pt-3">
         <div class="card" style="width: 100%">
             <div class="card-header" style="font-weight: bold; font-size: larger">
@@ -271,9 +260,7 @@
             </div>
         </div>
     </div>
-
     <% } %>
-
 </div>
 </body>
 </html>
