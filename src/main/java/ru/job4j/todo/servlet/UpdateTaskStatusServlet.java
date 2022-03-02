@@ -7,11 +7,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import ru.job4j.todo.dao.TaskDao;
 import ru.job4j.todo.dao.impl.TaskDaoImpl;
 import ru.job4j.todo.model.Task;
 
 public class UpdateTaskStatusServlet extends HttpServlet {
+
+    private static final Gson GSON = new GsonBuilder().create();
 
     private final TaskDao store = new TaskDaoImpl();
 
@@ -22,7 +25,7 @@ public class UpdateTaskStatusServlet extends HttpServlet {
         item.setId(Long.parseLong(id));
         item.setDone(true);
         store.update(item);
-        String json = new Gson().toJson("200 OK");
+        String json = GSON.toJson("200 OK");
         resp.setContentType("application/json; charset=utf-8");
         resp.getWriter().write(json);
     }

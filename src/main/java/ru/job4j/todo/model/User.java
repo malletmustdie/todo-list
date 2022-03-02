@@ -26,6 +26,10 @@ public class User {
 
     }
 
+    public User(String username) {
+        this.username = username;
+    }
+
     public User(String name, String email, String password) {
         this.username = name;
         this.email = email;
@@ -84,7 +88,7 @@ public class User {
     @Override
     public String toString() {
         return String.format(
-                "User:  id=%s, username=%s, email=%s, password=%s",
+                "User:  id %s, username %s, email %s, password %s",
                 id,
                 username,
                 email,
