@@ -1,5 +1,4 @@
 [![Build Status](https://app.travis-ci.com/malletmustdie/todo-list.svg?branch=master)](https://app.travis-ci.com/malletmustdie/todo-list)
-
 # TODO LIST
 + [Описание](#Описание-проекта)
 + [Технологии](#Используемые-технологии)
