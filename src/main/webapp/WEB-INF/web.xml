@@ -1,0 +1,97 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+
+  <servlet>
+    <servlet-name>RegServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.RegServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegServlet</servlet-name>
+    <url-pattern>/reg.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AuthServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.AuthServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthServlet</servlet-name>
+    <url-pattern>/auth.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout.do</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>AuthFilter</filter-name>
+    <filter-class>ru.job4j.todo.filter.AuthFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>CurrentUserServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.CurrentUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CurrentUserServlet</servlet-name>
+    <url-pattern>/current</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AddItemServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.AddItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddItemServlet</servlet-name>
+    <url-pattern>/save.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UpdateItemServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.UpdateItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateItemServlet</servlet-name>
+    <url-pattern>/update.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>DeleteItemServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.DeleteItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteItemServlet</servlet-name>
+    <url-pattern>/delete.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ShowItemsServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.ShowItemsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowItemsServlet</servlet-name>
+    <url-pattern>/items.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ShowUnresolvedItemsServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.ShowUnresolvedItemsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowUnresolvedItemsServlet</servlet-name>
+    <url-pattern>/unresolved-items.do</url-pattern>
+  </servlet-mapping>
+
+</web-app>
