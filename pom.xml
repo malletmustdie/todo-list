@@ -7,7 +7,7 @@
   <groupId>ru.job4j.todo</groupId>
   <artifactId>todo</artifactId>
   <version>1.0</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
@@ -24,23 +24,11 @@
     <hibernate.version>5.6.5.Final</hibernate.version>
     <servlet-api.version>4.0.1</servlet-api.version>
     <jstl.version>1.2</jstl.version>
-    <gson.version>2.8.6</gson.version>
-    <json.version>20200518</json.version>
+    <gson.version>2.9.0</gson.version>
+    <json.version>20211205</json.version>
   </properties>
 
   <profiles>
-    <profile>
-      <id>test</id>
-      <properties>
-        <db.url>jdbc:h2:mem:testdb;MODE=PostgreSQL;CASE_INSENSITIVE_IDENTIFIERS=TRUE;</db.url>
-        <db.username></db.username>
-        <db.password></db.password>
-        <db.driver>org.h2.Driver</db.driver>
-      </properties>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-    </profile>
     <profile>
       <id>production</id>
       <properties>
@@ -80,12 +68,6 @@
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>${postgres.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>${h2.version}</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.hibernate</groupId>
