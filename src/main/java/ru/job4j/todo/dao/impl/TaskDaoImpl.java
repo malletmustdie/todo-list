@@ -3,10 +3,10 @@ package ru.job4j.todo.dao.impl;
 import java.util.List;
 
 import ru.job4j.todo.dao.AbstractDao;
-import ru.job4j.todo.dao.ItemDao;
+import ru.job4j.todo.dao.TaskDao;
 import ru.job4j.todo.model.Task;
 
-public class ItemDaoImpl extends AbstractDao implements ItemDao {
+public class TaskDaoImpl extends AbstractDao implements TaskDao {
 
     @Override
     public Task save(Task item) {

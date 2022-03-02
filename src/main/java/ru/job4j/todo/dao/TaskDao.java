@@ -4,7 +4,7 @@ import java.util.List;
 
 import ru.job4j.todo.model.Task;
 
-public interface ItemDao {
+public interface TaskDao {
 
     Task save(Task item);
 

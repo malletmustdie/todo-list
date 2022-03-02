@@ -8,14 +8,14 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import ru.job4j.todo.dao.ItemDao;
-import ru.job4j.todo.dao.impl.ItemDaoImpl;
+import ru.job4j.todo.dao.TaskDao;
+import ru.job4j.todo.dao.impl.TaskDaoImpl;
 
-public class DeleteItemServlet extends HttpServlet {
+public class DeleteTaskServlet extends HttpServlet {
 
     private static final Gson GSON = new GsonBuilder().create();
 
-    private final ItemDao store = new ItemDaoImpl();
+    private final TaskDao store = new TaskDaoImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

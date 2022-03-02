@@ -50,47 +50,47 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>AddItemServlet</servlet-name>
-    <servlet-class>ru.job4j.todo.servlet.AddItemServlet</servlet-class>
+    <servlet-name>AddTaskServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.AddTaskServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AddItemServlet</servlet-name>
+    <servlet-name>AddTaskServlet</servlet-name>
     <url-pattern>/save.do</url-pattern>
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>UpdateItemServlet</servlet-name>
-    <servlet-class>ru.job4j.todo.servlet.UpdateItemServlet</servlet-class>
+    <servlet-name>UpdateTaskStatusServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.UpdateTaskStatusServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UpdateItemServlet</servlet-name>
+    <servlet-name>UpdateTaskStatusServlet</servlet-name>
     <url-pattern>/update.do</url-pattern>
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>DeleteItemServlet</servlet-name>
-    <servlet-class>ru.job4j.todo.servlet.DeleteItemServlet</servlet-class>
+    <servlet-name>DeleteTaskServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.DeleteTaskServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DeleteItemServlet</servlet-name>
+    <servlet-name>DeleteTaskServlet</servlet-name>
     <url-pattern>/delete.do</url-pattern>
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>ShowItemsServlet</servlet-name>
-    <servlet-class>ru.job4j.todo.servlet.ShowItemsServlet</servlet-class>
+    <servlet-name>ShowTasksServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.ShowTasksServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ShowItemsServlet</servlet-name>
+    <servlet-name>ShowTasksServlet</servlet-name>
     <url-pattern>/items.do</url-pattern>
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>ShowUnresolvedItemsServlet</servlet-name>
-    <servlet-class>ru.job4j.todo.servlet.ShowUnresolvedItemsServlet</servlet-class>
+    <servlet-name>ShowUnresolvedTasksServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.servlet.ShowUnresolvedTasksServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ShowUnresolvedItemsServlet</servlet-name>
+    <servlet-name>ShowUnresolvedTasksServlet</servlet-name>
     <url-pattern>/unresolved-items.do</url-pattern>
   </servlet-mapping>
 

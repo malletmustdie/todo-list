@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.google.gson.Gson;
-import ru.job4j.todo.dao.ItemDao;
-import ru.job4j.todo.dao.impl.ItemDaoImpl;
+import ru.job4j.todo.dao.TaskDao;
+import ru.job4j.todo.dao.impl.TaskDaoImpl;
 import ru.job4j.todo.model.Task;
 
-public class UpdateItemServlet extends HttpServlet {
+public class UpdateTaskStatusServlet extends HttpServlet {
 
-    private final ItemDao store = new ItemDaoImpl();
+    private final TaskDao store = new TaskDaoImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
