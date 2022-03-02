@@ -1,8 +1,8 @@
 package ru.job4j.todo.dao;
 
-import ru.job4j.todo.model.Item;
+import java.util.List;
 
-import java.util.Collection;
+import ru.job4j.todo.model.Item;
 
 public interface ItemDao {
 
@@ -14,12 +14,8 @@ public interface ItemDao {
 
     Item findById(long id);
 
-    Collection<Item> findAll();
+    List<Item> findAll();
 
-    Collection<Item> findAllUnresolved();
-
-    Collection<Item> findAllDone();
-
-    Collection<Item> findAllNotDone();
+    List<Item> findAllUnresolved();
 
 }

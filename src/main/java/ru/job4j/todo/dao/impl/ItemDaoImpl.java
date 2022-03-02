@@ -1,6 +1,6 @@
 package ru.job4j.todo.dao.impl;
 
-import java.util.Collection;
+import java.util.List;
 
 import ru.job4j.todo.dao.AbstractDao;
 import ru.job4j.todo.dao.ItemDao;
@@ -41,7 +41,7 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
     }
 
     @Override
-    public Collection<Item> findAll() {
+    public List<Item> findAll() {
         return this.tx(
                 session -> session
                         .createQuery("from Item")
@@ -50,22 +50,12 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
     }
 
     @Override
-    public Collection<Item> findAllUnresolved() {
+    public List<Item> findAllUnresolved() {
         return this.tx(
                 session -> session
                         .createQuery("from Item i where i.done = false order by i.id")
                         .list()
         );
-    }
-
-    @Override
-    public Collection<Item> findAllDone() {
-        return null;
-    }
-
-    @Override
-    public Collection<Item> findAllNotDone() {
-        return null;
     }
 
 }
