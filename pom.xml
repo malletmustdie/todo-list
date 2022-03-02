@@ -26,19 +26,12 @@
     <jstl.version>1.2</jstl.version>
     <gson.version>2.9.0</gson.version>
     <json.version>20211205</json.version>
+    <!-- db properties for liquibase  -->
+    <db.url>jdbc:postgresql://localhost:5432/todo</db.url>
+    <db.username>postgres</db.username>
+    <db.password>postgres</db.password>
+    <db.driver>org.postgresql.Driver</db.driver>
   </properties>
-
-  <profiles>
-    <profile>
-      <id>production</id>
-      <properties>
-        <db.url>jdbc:postgresql://localhost:5432/todo</db.url>
-        <db.username>postgres</db.username>
-        <db.password>postgres</db.password>
-        <db.driver>org.postgresql.Driver</db.driver>
-      </properties>
-    </profile>
-  </profiles>
 
   <dependencies>
     <dependency>
