@@ -16,15 +16,11 @@ public class UpdateTaskStatusServlet extends HttpServlet {
 
     private static final Gson GSON = new GsonBuilder().create();
 
-    private final TaskDao store = new TaskDaoImpl();
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String id = req.getParameter("id");
-        Task item = store.findById(Long.parseLong(id));
-        item.setId(Long.parseLong(id));
-        item.setDone(true);
-        store.update(item);
+        TaskDao taskDao = TaskDaoImpl.getTaskDao();
+        taskDao.updateTaskStatus(Long.parseLong(id));
         String json = GSON.toJson("200 OK");
         resp.setContentType("application/json; charset=utf-8");
         resp.getWriter().write(json);

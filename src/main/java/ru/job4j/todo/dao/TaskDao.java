@@ -10,9 +10,7 @@ public interface TaskDao {
 
     void delete(Long id);
 
-    void update(Task item);
-
-    Task findById(Long id);
+    void updateTaskStatus(Long id);
 
     List<Task> findAll();
 

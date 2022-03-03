@@ -17,17 +17,16 @@ public class AddTaskServlet extends HttpServlet {
 
     private static final Gson GSON = new GsonBuilder().create();
 
-    private final TaskDao itemDao = new TaskDaoImpl();
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
         String description = req.getParameter("desc");
         User user = (User) req.getSession().getAttribute("user");
-        Task item = new Task(description);
-        item.setUser(user);
-        itemDao.save(item);
-        String response = GSON.toJson(item);
+        TaskDao taskDao = TaskDaoImpl.getTaskDao();
+        Task task = new Task(description);
+        task.setUser(user);
+        taskDao.save(task);
+        String response = GSON.toJson(task);
         resp.setContentType("application/json; charset=utf-8");
         resp.getWriter().write(response);
     }

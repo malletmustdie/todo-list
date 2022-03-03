@@ -15,12 +15,11 @@ public class DeleteTaskServlet extends HttpServlet {
 
     private static final Gson GSON = new GsonBuilder().create();
 
-    private final TaskDao store = new TaskDaoImpl();
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String id = req.getParameter("id");
-        store.delete(Long.valueOf(id));
+        TaskDao taskDao = TaskDaoImpl.getTaskDao();
+        taskDao.delete(Long.valueOf(id));
         String response = GSON.toJson("200 OK");
         resp.setContentType("application/json; charset=utf-8");
         resp.getWriter().write(response);

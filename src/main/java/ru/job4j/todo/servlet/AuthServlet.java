@@ -14,8 +14,6 @@ import java.io.IOException;
 
 public class AuthServlet extends HttpServlet {
 
-    private final UserDao userDao = new UserDaoImpl();
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -27,6 +25,7 @@ public class AuthServlet extends HttpServlet {
             throws ServletException, IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        UserDao userDao = UserDaoImpl.getUserDao();
         User user = userDao.findByEmail(email);
         if (user != null && user.getPassword().equals(password)) {
             HttpSession sc = req.getSession();

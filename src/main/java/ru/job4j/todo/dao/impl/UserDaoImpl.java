@@ -6,6 +6,12 @@ import ru.job4j.todo.model.User;
 
 public class UserDaoImpl extends AbstractDao implements UserDao {
 
+    private static final UserDaoImpl INSTANCE = new UserDaoImpl();
+
+    public static UserDaoImpl getUserDao() {
+        return INSTANCE;
+    }
+
     @Override
     public User save(User user) {
         this.tx(session -> session.save(user));

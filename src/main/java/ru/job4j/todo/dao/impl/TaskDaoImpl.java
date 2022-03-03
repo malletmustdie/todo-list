@@ -8,6 +8,12 @@ import ru.job4j.todo.model.Task;
 
 public class TaskDaoImpl extends AbstractDao implements TaskDao {
 
+    private static final TaskDaoImpl INSTANCE = new TaskDaoImpl();
+
+    public static TaskDaoImpl getTaskDao() {
+        return INSTANCE;
+    }
+
     @Override
     public Task save(Task item) {
         this.tx(session -> session.save(item));
@@ -23,21 +29,10 @@ public class TaskDaoImpl extends AbstractDao implements TaskDao {
     }
 
     @Override
-    public void update(Task item) {
-        this.tx(session -> session.createQuery("update Task i set i.done = :done where i.id = :id")
-                                  .setParameter("done", item.getDone())
-                                  .setParameter("id", item.getId())
+    public void updateTaskStatus(Long id) {
+        this.tx(session -> session.createQuery("update Task i set i.done = true where i.id = :id")
+                                  .setParameter("id", id)
                                   .executeUpdate());
-    }
-
-    @Override
-    public Task findById(Long id) {
-        return (Task) this.tx(
-                session -> session
-                        .createQuery("from Task i where i.id = :id")
-                        .setParameter("id", id)
-                        .uniqueResult()
-        );
     }
 
     @Override
