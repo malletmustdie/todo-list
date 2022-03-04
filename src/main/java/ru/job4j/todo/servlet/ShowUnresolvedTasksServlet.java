@@ -17,8 +17,6 @@ public class ShowUnresolvedTasksServlet extends HttpServlet {
 
     private static final Gson GSON = new GsonBuilder().create();
 
-    private final TaskDao store = new TaskDaoImpl();
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         TaskDao taskDao = TaskDaoImpl.getTaskDao();

@@ -8,10 +8,16 @@ import ru.job4j.todo.model.Task;
 
 public class TaskDaoImpl extends AbstractDao implements TaskDao {
 
-    private static final TaskDaoImpl INSTANCE = new TaskDaoImpl();
+    private TaskDaoImpl() {
+
+    }
+
+    private static class Holder {
+        public static final TaskDaoImpl HOLDER_INSTANCE = new TaskDaoImpl();
+    }
 
     public static TaskDaoImpl getTaskDao() {
-        return INSTANCE;
+        return Holder.HOLDER_INSTANCE;
     }
 
     @Override
