@@ -1,8 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page isELIgnored="false" %>
 <%@ page import="ru.job4j.todo.model.User" %>
 <!doctype html>
-<html lang="en" xmlns:c="">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -14,7 +14,6 @@
 
     <script rel="stylesheet" src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
             crossorigin="anonymous"></script>
@@ -57,6 +56,7 @@
         </div>
     </div>
     <% if (user != null) { %>
+
     <div class="row pt-2">
         <div class="card" style="width: 100%">
             <div class="card-header" style="font-weight: bold; font-size: larger">
@@ -68,11 +68,18 @@
                         <label for="description" style="font-weight: bold">Описание задачи</label>
                         <input type="text" class="form-control" id="description"/>
                     </div>
+                    <div class="form-group">
+                        <label for="cIds" style="font-weight: bold">Категория</label>
+                        <select class="form-control" name="cIds" id="cIds" multiple>
+
+                        </select>
+                    </div>
                     <input type="submit"/>
                 </form>
             </div>
         </div>
     </div>
+
     <div class="row pt-3">
         <div class="form-check pb-2">
             <input type="checkbox" id="showTasks" name="showTasks" value="showTasks" checked onchange="filterTasks()">
@@ -90,6 +97,7 @@
                     <tr>
                         <th style="width: 5%">ID</th>
                         <th style="width: 25%">Description</th>
+                        <th style="width: 25%">Category</th>
                         <th style="width: 12%">Author</th>
                         <th style="width: 15%">Created</th>
                         <th style="width: 1%">Status</th>

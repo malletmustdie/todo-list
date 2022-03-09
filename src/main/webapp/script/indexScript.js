@@ -1,12 +1,29 @@
 $(document).ready(function () {
-    showAllTasks();
     getCurrentUser();
+    showCategories();
+    showAllTasks();
     addNewTask();
 });
 
+function showCategories() {
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8080/todo/categories',
+        dataType: 'json',
+        success: function (data) {
+            let options;
+            $.each(data, function(index, object) {
+                options += '<option value="' + object.id + '">' + object.name + '</option>';
+            });
+
+            $('#cIds').html(options);
+        }
+    });
+}
+
 function getCurrentUser() {
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         url: 'http://localhost:8080/todo/current',
         dataType: 'json',
         success: function (data) {
@@ -26,10 +43,12 @@ function addNewTask() {
     $("#new-task-form").submit(
         function () {
             let description = $("#description").val();
+            let ids = $("#cIds").val();
             $.ajax({
                 method: 'POST',
-                url: 'http://localhost:8080/todo/save.do',
-                data: {desc: description},
+                url: 'http://localhost:8080/todo/save',
+                dataType: 'json',
+                data: JSON.stringify({desc : description, cIds : ids}),
                 success: function (data) {
                     let result = fillTable(data);
                     $('#tableBody tr:last').after(result);
@@ -51,7 +70,7 @@ function filterTasks() {
 function showAllTasks() {
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:8080/todo/items.do',
+        url: 'http://localhost:8080/todo/items',
         dataType: 'json',
         success: function ($data) {
             createTable($data);
@@ -62,7 +81,7 @@ function showAllTasks() {
 function showUnresolvedTasks() {
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:8080/todo/unresolved-items.do',
+        url: 'http://localhost:8080/todo/unresolved-items',
         dataType: 'json',
         success: function ($data) {
             createTable($data);
@@ -87,13 +106,17 @@ function fillTable(data) {
     let result = '';
     let id = data['id'];
     let desc = data['description'];
+    let categories = data['categories'];
     let created = data['created'];
     let author = data['user'].username;
     let done = data['done'];
     result += '<tr class="rows">'
         + '<td id="id">' + id + '</td>'
-        + '<td>' + desc + '</td>'
-        + '<td>' + author + '</td>'
+        + '<td>' + desc + '</td><td>';
+    for (let i = 0; i < categories.length; i++) {
+        result += categories[i]['name'] + '<br>';
+    }
+    result += '</td><td>' + author + '</td>'
         + '<td>' + created.toLocaleString() + '</td>';
     if (done) {
         result += '<td>'
@@ -119,7 +142,7 @@ function fillTable(data) {
 function setStatusDone(id) {
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:8080/todo/update.do',
+        url: 'http://localhost:8080/todo/update',
         data: {id: id},
         success: function () {
             location.reload();
@@ -130,7 +153,7 @@ function setStatusDone(id) {
 function deleteTask(id) {
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:8080/todo/delete.do',
+        url: 'http://localhost:8080/todo/delete',
         data: {id: id},
         success: function () {
             location.reload();

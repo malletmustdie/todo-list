@@ -25,12 +25,36 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="create_categories_table" author="elias">
+        <createTable tableName="categories">
+            <column name="id" type="serial">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="categories_pkey"/>
+            </column>
+            <column name="name" type="text"/>
+        </createTable>
+    </changeSet>
+
     <changeSet id="insert_into_users_table" author="elias">
         <insert tableName="users">
             <column name="id" value="1"/>
             <column name="username" value="Admin"/>
             <column name="email" value="root@local"/>
             <column name="password" value="root"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert_into_categories_table" author="elias">
+        <insert tableName="categories">
+            <column name="id" value="1"/>
+            <column name="name" value="First Category"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="id" value="2"/>
+            <column name="name" value="Second Category"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="id" value="3"/>
+            <column name="name" value="Third Category"/>
         </insert>
     </changeSet>
 

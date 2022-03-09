@@ -44,8 +44,10 @@ public class TaskDaoImpl extends AbstractDao implements TaskDao {
     @Override
     public List<Task> findAll() {
         return this.tx(
-                session -> session
-                        .createQuery("from Task i order by i.id")
+                session -> session.createQuery("select distinct i "
+                                                       + "from Task i "
+                                                       + "join fetch i.categories "
+                                                       + "order by i.id")
                         .list()
         );
     }
@@ -54,7 +56,13 @@ public class TaskDaoImpl extends AbstractDao implements TaskDao {
     public List<Task> findAllUnresolved() {
         return this.tx(
                 session -> session
-                        .createQuery("from Task i where i.done = false order by i.id")
+                        .createQuery(
+                                "select distinct i "
+                                        + "from Task i "
+                                        + "join fetch i.categories "
+                                        + "where i.done = false "
+                                        + "order by i.id"
+                        )
                         .list()
         );
     }
