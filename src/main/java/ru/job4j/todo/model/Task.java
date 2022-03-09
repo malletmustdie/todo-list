@@ -9,9 +9,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,7 +30,8 @@ public class Task {
 
     private String description;
 
-    private String created;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created;
 
     private Boolean done;
 
@@ -43,7 +47,7 @@ public class Task {
 
     public Task(String description) {
         this.description = description;
-        this.created = DateFormatUtil.parseCreatedDate(new Timestamp(System.currentTimeMillis()));
+        this.created = new Date(System.currentTimeMillis());
         this.done = false;
     }
 
@@ -63,7 +67,7 @@ public class Task {
         this.description = description;
     }
 
-    public String getCreated() {
+    public Date getCreated() {
         return created;
     }
 

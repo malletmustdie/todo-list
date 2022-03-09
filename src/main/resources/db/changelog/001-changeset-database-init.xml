@@ -9,7 +9,7 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="item_pkey"/>
             </column>
             <column name="description" type="text"/>
-            <column name="created" type="text"/>
+            <column name="created" type="timestamp"/>
             <column name="done" type="boolean"/>
         </createTable>
     </changeSet>
