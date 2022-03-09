@@ -44,7 +44,7 @@
         <profile>
             <id>production</id>
             <properties>
-                <db.url>jdbc:postgresql://localhost:5432/tracker</db.url>
+                <db.url>jdbc:postgresql://localhost:5432/todo</db.url>
                 <db.username>postgres</db.username>
                 <db.password>postgres</db.password>
                 <db.driver>org.postgresql.Driver</db.driver>
