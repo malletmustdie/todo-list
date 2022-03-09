@@ -1,17 +1,12 @@
-# используем язык java. Travis CI поддерживает другие языки тоже.
+# Set Java lang for Travis CI.
 language: java
-jdk:
-  - openjdk14
+install: true
 
-# используем режим обычного пользователя для сборки проекта.
+jdk: oraclejdk11
+
 sudo: false
 
-# после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
-# Здесь используется сторонний сервис https://codecov.io/
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-
-# Отправлять уведомление на почту youremail@smtp.ru (Изменить на свою) если сборка упала
+# Notifications
 notifications:
   email:
     recipients:
