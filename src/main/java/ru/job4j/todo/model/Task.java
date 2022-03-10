@@ -12,13 +12,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
-
-import ru.job4j.todo.util.DateFormatUtil;
+import java.util.Set;
 
 @Entity
 @Table(name = "tasks")
@@ -40,7 +37,7 @@ public class Task {
     private User user;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private final List<Category> categories = new ArrayList<>();
+    private final Set<Category> categories = new HashSet<>();
 
     public Task() {
     }
@@ -87,7 +84,7 @@ public class Task {
         this.user = user;
     }
 
-    public List<Category> getCategories() {
+    public Set<Category> getCategories() {
         return categories;
     }
 
