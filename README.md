@@ -10,7 +10,7 @@ Todo list - web приложение, аналог простейшего мен
 ## Используемые технологии
 + **Java 14**,  **Servlet/JSP**
 + **PostgreSQL**, **Hibernate**
-+ **Bootstrap**, **AJAX**, **Jquery**
++ **Bootstrap**, **AJAX**, **jQuery**
 + **Maven**
 
 ## Функционал приложения
